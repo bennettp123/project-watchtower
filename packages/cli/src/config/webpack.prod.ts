@@ -19,11 +19,16 @@ export const prodConfig: CreateWebpackConfig = () => ({
                 },
             }),
         ],
+        splitChunks: {
+            chunks: 'all',
+            hidePathInfo: true,
+        },
     },
     plugins: [
-        new webpack.optimize.AggressiveMergingPlugin(),
+        //new webpack.optimize.AggressiveMergingPlugin(),
         new webpack.LoaderOptionsPlugin({
             minimize: true,
         }),
+        new webpack.optimize.AggressiveSplittingPlugin(),
     ],
 })
